@@ -1,19 +1,22 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
-const maisonsListe: {
-    adresse: string;
-    collectionId: string;
-    collectionName: string;
-    created: string;
-    favori: boolean;
-    id: string;
-    image: string;
-    nbChambres: number;
-    nbSdb: number;
-    nomMaison: string;
-    prix: number;
-    surface: number;
-    updated: string;
-}[] = [
+interface MaisonRecord {
+  adresse: string;
+  collectionId: string;
+  collectionName: string;
+  created: string;
+  favori: boolean;
+  id: string;
+  image: string;
+  nbChambres: number;
+  nbSdb: number;
+  nomMaison: string;
+  prix: number;
+  surface: number;
+  updated: string;
+}
+
+const maisonsListe: MaisonRecord[] = [
   {
     "adresse": "3 rue du bleu",
     "collectionId": "0vwm8kqkc6n47nn",
@@ -90,6 +93,8 @@ const maisonsListe: {
     "updated": "2024-04-12 12:47:09.883Z"
   }
 ]
+
+console.log(maisonsListe);
 
 </script>
 
