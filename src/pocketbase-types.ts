@@ -1,5 +1,4 @@
-/**
-* This file was @generated using pocketbase-typegen
+/*** This file was @generated using pocketbase-typegen
 */
 
 import type PocketBase from 'pocketbase'
@@ -84,3 +83,4 @@ export type TypedPocketBase = PocketBase & {
 	collection(idOrName: 'maison'): RecordService<MaisonResponse>
 	collection(idOrName: 'users'): RecordService<UsersResponse>
 }
+ase & {}
