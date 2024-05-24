@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import type { MaisonRecord } from '@/pocketbase-types';
+  import type { MaisonRecord, MaisonResponse } from '@/pocketbase-types'
+import ImgPb from './ImgPb.vue';
 
-
-  defineProps<MaisonRecord>()
+ const props = defineProps<MaisonResponse<any>>()
+ console.log({...props})
 </script>
 <template>
   <div
@@ -12,8 +13,9 @@ import type { MaisonRecord } from '@/pocketbase-types';
     <div
       class="w-[394.67px] h-[200px] absolute left-[-0.5px] top-[-0.5px] rounded-tl-lg rounded-tr-lg bg-gray-500"
     ></div>
-    <img
-      src=""
+    <ImgPb
+    :record="props"
+    :filename="image"
       class="w-[394.67px] h-[235px] absolute left-[-0.5px] top-[-24.5px] object-cover"
     />
   </div>
@@ -24,7 +26,7 @@ import type { MaisonRecord } from '@/pocketbase-types';
       <div class="flex-grow-0 flex-shrink-0 w-[249px] h-[75px]">
         <div class="flex justify-start items-end w-[164.11px] absolute left-0 top-0 gap-0.5">
           <p class="flex-grow-0 flex-shrink-0 text-2xl font-bold text-left text-indigo-500">
-            {{ prix }}
+            {{ prix }}€
           </p>
           <p class="flex-grow-0 flex-shrink-0 w-[58px] h-8 text-base text-left text-gray-500">
             /month
@@ -33,14 +35,14 @@ import type { MaisonRecord } from '@/pocketbase-types';
         <p
           class="w-[249px] absolute left-0 top-[43px] text-2xl font-semibold text-left text-gray-900"
         >
-          {{ nomMaison }}
+          {{nomMaison}}
         </p>
       </div>
       <svg
         width="49"
         height="48"
         viewBox="0 0 49 48"
-        fill="none"
+        :fill="favori?'red':'none'"
         xmlns="http://www.w3.org/2000/svg"
         class="flex-grow-0 flex-shrink-0 w-12 h-12"
         preserveAspectRatio="xMidYMid meet"
@@ -126,7 +128,7 @@ import type { MaisonRecord } from '@/pocketbase-types';
           class="flex-grow-0 flex-shrink-0 w-5 h-5 relative"
           preserveAspectRatio="xMidYMid meet"
         >
-          <g clip-path="url(#clip0_34922_645)">
+          <g clip-path="url(#clip0_34923_2474)">
             <path
               d="M3.66659 10H16.9999C17.2209 10 17.4329 10.0878 17.5892 10.2441C17.7455 10.4004 17.8333 10.6123 17.8333 10.8333V13.3333C17.8333 14.2174 17.4821 15.0652 16.8569 15.6904C16.2318 16.3155 15.384 16.6667 14.4999 16.6667H6.16659C5.28253 16.6667 4.43468 16.3155 3.80956 15.6904C3.18444 15.0652 2.83325 14.2174 2.83325 13.3333V10.8333C2.83325 10.6123 2.92105 10.4004 3.07733 10.2441C3.23361 10.0878 3.44557 10 3.66659 10V10Z"
               stroke="#6366F1"
@@ -157,13 +159,13 @@ import type { MaisonRecord } from '@/pocketbase-types';
             ></path>
           </g>
           <defs>
-            <clipPath id="clip0_34922_645">
+            <clipPath id="clip0_34923_2474">
               <rect width="20" height="20" fill="white" transform="translate(0.333252)"></rect>
             </clipPath>
           </defs>
         </svg>
         <div class="flex justify-center items-center flex-grow-0 flex-shrink-0 relative gap-1">
-          <p class="flex-grow-0 flex-shrink-0 text-xs text-left text-gray-600">{{ nbSdb }}</p>
+          <p class="flex-grow-0 flex-shrink-0 text-xs text-left text-gray-600">{{nbSdb }}</p>
           <p class="flex-grow-0 flex-shrink-0 text-xs text-left text-gray-600">Bathrooms</p>
         </div>
       </div>
@@ -177,7 +179,7 @@ import type { MaisonRecord } from '@/pocketbase-types';
           class="flex-grow-0 flex-shrink-0 w-5 h-5 relative"
           preserveAspectRatio="none"
         >
-          <g clip-path="url(#clip0_34922_655)">
+          <g clip-path="url(#clip0_34923_2484)">
             <path
               d="M9.49823 15.5437L4.12305 10.1685C3.51465 9.56008 3.51465 8.43986 4.12305 7.83145L9.49823 2.45628C10.1066 1.84787 11.2269 1.84787 11.8353 2.45628L17.2104 7.83145C17.8189 8.43986 17.8189 9.56008 17.2104 10.1685L11.8353 15.5437C11.2269 16.1521 10.1066 16.1521 9.49823 15.5437V15.5437Z"
               stroke="#6366F1"
@@ -201,17 +203,18 @@ import type { MaisonRecord } from '@/pocketbase-types';
             ></path>
           </g>
           <defs>
-            <clipPath id="clip0_34922_655">
+            <clipPath id="clip0_34923_2484">
               <rect width="20" height="20" fill="white" transform="translate(0.666626)"></rect>
             </clipPath>
           </defs>
         </svg>
         <div class="flex justify-end items-center flex-grow-0 flex-shrink-0 relative gap-1">
-          <p class="flex-grow-0 flex-shrink-0 text-xs text-left text-gray-600">{{ surface }}</p>
+          <p class="flex-grow-0 flex-shrink-0 text-xs text-left text-gray-600">{{surface}}</p>
           <p class="flex-grow-0 flex-shrink-0 text-xs text-left text-gray-600">m²</p>
         </div>
       </div>
     </div>
   </div>
 </div>
+
 </template>
